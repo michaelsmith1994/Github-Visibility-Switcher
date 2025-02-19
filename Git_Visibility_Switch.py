@@ -2,7 +2,7 @@ import requests
 
 GITHUB_USERNAME = input("Enter your GitHub username: ").strip()
 GITHUB_TOKEN = input("Enter your GitHub Personal Access Token: ").strip()
-REPO_PREFIX = input("Enter the repository name prefix to filter (e.g., 'michaelsmith1994-'): ").strip()
+REPO_SUBSTRING = input("Enter the repository name substring to filter for (e.g., 'michaelsmith1994-'): ").strip()
 
 while True:
     VISIBILITY_CHOICE = input("Do you want to set repositories to 'public' or 'private'? ").strip().lower()
@@ -56,7 +56,7 @@ repositories = get_repositories()
 for repo in repositories:
     repo_name = repo["name"]
     
-    if repo_name.startswith(REPO_PREFIX):
+    if REPO_SUBSTRING in repo_name:
         current_visibility = repo["private"]
         
         if current_visibility == MAKE_PRIVATE:
@@ -64,4 +64,4 @@ for repo in repositories:
         else:
             update_repo_visibility(repo_name, MAKE_PRIVATE)
     else:
-        print(f"Skipping {repo_name}: Does not match prefix")
+        print(f"Skipping {repo_name}: Does not match substring provided...")
