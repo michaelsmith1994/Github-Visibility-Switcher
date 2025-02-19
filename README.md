@@ -2,7 +2,7 @@ GitHub Repository Visibility Switcher
 
 Overview
 
-This script allows you to programmatically update the visibility (public or private) of multiple GitHub repositories that start with a specific prefix.
+This script allows you to programmatically update the visibility (public or private) of multiple GitHub repositories that start with a specific substring.
 
 Prerequisites
 
